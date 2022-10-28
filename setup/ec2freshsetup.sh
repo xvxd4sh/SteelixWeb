@@ -1,4 +1,4 @@
-#!bin/bash/ 
+#!/bin/bash 
 ##################################################
 # Setup script for a new fresh debian ec2 instance
 #

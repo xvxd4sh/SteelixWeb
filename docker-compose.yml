@@ -18,6 +18,7 @@ services:
     volumes:
       - ./src/apache2/config/apache2.conf:/etc/apache2/apache2.conf
       - ./src/apache2/config/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
-      - ./src/secrets/default.cert:/etc/ssl/certs/default.cert
-      - ./src/secrets/default.key:/etc/ssl/private/default.key
-      - ./src/secrets/ca_bundle.crt:/etc/ssl/private/ca_bundle.crt
+      - ./src/apache2/html:/var/www/html/
+      - ./src/secrets/cert.pem:/etc/ssl/certs/cert.pem
+      - ./src/secrets/privkey.pem:/etc/ssl/private/privkey.pem
+      - ./src/secrets/chain.pem:/etc/ssl/private/chain.pem
