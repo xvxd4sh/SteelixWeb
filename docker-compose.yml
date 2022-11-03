@@ -22,3 +22,25 @@ services:
       - ./src/secrets/cert.pem:/etc/ssl/certs/cert.pem
       - ./src/secrets/privkey.pem:/etc/ssl/private/privkey.pem
       - ./src/secrets/chain.pem:/etc/ssl/private/chain.pem
+    networks:
+      appNetwork:
+        ipv4_address: 172.19.0.1
+  steelix-app:
+    # Run the process on the backend 
+    build:
+      context: .
+      dockerfile: src/steelapp/Dockerfile
+    container_name: SteelApp
+    init: true
+    restart: "no"
+    networks: 
+      appNetwork:
+        ipv4_address: 172.19.0.5
+
+networks:
+  appNetwork:
+    driver: bridge
+    ipam: 
+      driver: default
+      config: 
+        - subnet: 172.19.0.0/16
